@@ -4,19 +4,18 @@ import Post from './Post';
 import {db} from './firebase';
 
 function App() {
-  const [posts,setPosts] = useState([
-    {username:"chata",
-     caption:'this is a caption', 
-     imageUrl:"https://hackernoon.com/images/z2xg2bpo.jpg"},
-
-     {username:"chata",
-     caption:'this is a caption', 
-     imageUrl:"https://hackernoon.com/images/z2xg2bpo.jpg"},
-    
+  const [posts,setPosts] = useState([    
   ]);
 
   useEffect(() => {
-    db.collection('posts')
+    db.collection('posts').onSnapshot(snapshot => {
+      setPosts(
+        snapshot.docs.map(doc => ({
+          id : doc.id,
+          post : doc.data()
+        }))
+      )
+    })
   },[])
 
   return (
@@ -27,8 +26,8 @@ function App() {
 
 
       {
-        posts.map(post=>(
-          <Post username={post.username} caption={post.caption} imageUrl={post.imageUrl}/>
+        posts.map(({id,post})=>(
+          <Post key={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl}/>
         ))
       }
 
