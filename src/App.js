@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import './App.css';
 import Post from './Post';
+import {db} from './firebase';
 
 function App() {
   const [posts,setPosts] = useState([
@@ -13,6 +14,10 @@ function App() {
      imageUrl:"https://hackernoon.com/images/z2xg2bpo.jpg"},
     
   ]);
+
+  useEffect(() => {
+    db.collection('posts')
+  },[])
 
   return (
       <div className="app">
