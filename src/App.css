@@ -12,3 +12,8 @@
   object-fit: contain;
   background-color: white;
 }
+
+.app__signup{
+  display: flex;
+  flex-direction: column;
+}
