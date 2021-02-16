@@ -37,8 +37,18 @@
     flex: 1;
     border:none;
     padding: 10px;
+    border:lightgray 1px solid;
 }
 
 .post__button{
     flex: 0;
+    border: none;
+    border-top: 1px solid lightgray;
+    color: #6082a3;
+    background-color: transparent;
+}
+
+
+.post__comments{
+    padding: 20px;
 }
