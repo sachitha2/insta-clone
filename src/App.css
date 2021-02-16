@@ -1,19 +1,25 @@
-*{
-  margin:0;
+* {
+  margin: 0;
 }
 
-.app{
+.app {
   height: 100vh;
 }
 
-.app__header{
+.app__header {
+  position: sticky;
   padding: 20px;
   border-bottom: 1px solid lightgray;
   object-fit: contain;
   background-color: white;
+  display: flex;
+  justify-content: space-between;
 }
 
-.app__signup{
+.app__signup {
   display: flex;
   flex-direction: column;
+}
+.app__post{
+  padding:20px;
 }
