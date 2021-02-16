@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import './App.css';
 import Post from './Post';
-import {auth, db} from './firebase';
+import {auth, db,msg} from './firebase';
 import { Button, Input, Modal } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -31,6 +31,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function App() {
+
+  useEffect(() => {
+    msg.requestPermission().then(()=>{
+      return msg.getToken();
+    }).then((data)=>{
+      console.warn("token",data);
+    })
+  })
+
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
   const [open,setopen] = useState(false);
